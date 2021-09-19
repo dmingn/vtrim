@@ -3,7 +3,7 @@ profile = "black"
 
 [tool.poetry]
 name = "vtrim"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
 authors = ["dmingn <dmingn@users.noreply.github.com>"]
 

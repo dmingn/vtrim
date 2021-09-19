@@ -3,7 +3,7 @@ profile = "black"
 
 [tool.poetry]
 name = "vtrim"
-version = "1.0.0"
+version = "1.0.1"
 description = ""
 authors = ["dmingn <dmingn@users.noreply.github.com>"]
 
@@ -19,7 +19,7 @@ isort = "^5.9.3"
 mypy = "^0.910"
 
 [tool.poetry.scripts]
-vtrim = "src.vtrim.vtrim:main"
+vtrim = "vtrim.vtrim:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

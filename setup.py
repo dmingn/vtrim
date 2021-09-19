@@ -9,11 +9,11 @@ package_data = {"": ["*"]}
 
 install_requires = ["click>=8.0.1,<9.0.0", "ffmpeg-python>=0.2.0,<0.3.0"]
 
-entry_points = {"console_scripts": ["vtrim = src.vtrim.vtrim:main"]}
+entry_points = {"console_scripts": ["vtrim = vtrim.vtrim:main"]}
 
 setup_kwargs = {
     "name": "vtrim",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "long_description": None,
     "author": "dmingn",

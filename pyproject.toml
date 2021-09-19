@@ -1,0 +1,26 @@
+[tool.isort]
+profile = "black"
+
+[tool.poetry]
+name = "vtrim"
+version = "0.1.0"
+description = ""
+authors = ["dmingn <dmingn@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+click = "^8.0.1"
+ffmpeg-python = "^0.2.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.9b0"
+flake8 = "^3.9.2"
+isort = "^5.9.3"
+mypy = "^0.910"
+
+[tool.poetry.scripts]
+vtrim = "src.vtrim.vtrim:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

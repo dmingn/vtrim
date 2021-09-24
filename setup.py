@@ -13,7 +13,7 @@ entry_points = {"console_scripts": ["vtrim = vtrim.vtrim:main"]}
 
 setup_kwargs = {
     "name": "vtrim",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "",
     "long_description": None,
     "author": "dmingn",

@@ -11,10 +11,16 @@ import ffmpeg
 )
 @click.option("--ss", type=str, default=None)
 @click.option("--to", type=str, default=None)
-def vtrim(input_file: Path, ss: str, to: str):
+@click.option("--transcode/--no-transcode", default=True)
+def vtrim(input_file: Path, ss: str, to: str, transcode: bool):
     output_file = input_file.with_stem("_".join([input_file.stem, ss, to]))
 
-    ffmpeg.input(input_file).output(str(output_file), codec="copy", ss=ss, to=to).run()
+    if transcode:
+        ffmpeg.input(input_file, ss=ss, to=to).output(str(output_file)).run()
+    else:
+        ffmpeg.input(input_file).output(
+            str(output_file), codec="copy", ss=ss, to=to
+        ).run()
 
 
 def main():

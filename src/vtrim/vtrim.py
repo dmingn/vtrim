@@ -1,6 +1,8 @@
+import os
 from pathlib import Path
 
 import click
+import docker
 import ffmpeg
 
 
@@ -13,14 +15,33 @@ import ffmpeg
 @click.option("--to", type=str, default=None)
 @click.option("--transcode/--no-transcode", default=True)
 def vtrim(input_file: Path, ss: str, to: str, transcode: bool):
+    working_dir = input_file.parent
     output_file = input_file.with_stem("_".join([input_file.stem, ss, to]))
 
     if transcode:
-        ffmpeg.input(input_file, ss=ss, to=to).output(str(output_file)).run()
+        command = (
+            ffmpeg.input(str(input_file), ss=ss, to=to)
+            .output(str(output_file))
+            .get_args()
+        )
     else:
-        ffmpeg.input(input_file).output(
-            str(output_file), codec="copy", ss=ss, to=to
-        ).run()
+        command = (
+            ffmpeg.input(str(input_file))
+            .output(str(output_file), codec="copy", ss=ss, to=to)
+            .get_args()
+        )
+
+    docker.from_env().containers.run(
+        image="jrottenberg/ffmpeg:4.4-alpine38",
+        command=command,
+        user=f"{os.getuid()}:{os.getgid()}",
+        volumes={
+            "/etc/passwd": {"bind": "/etc/passwd", "mode": "ro"},
+            "/etc/group": {"bind": "/etc/group", "mode": "ro"},
+            str(working_dir): {"bind": str(working_dir), "mode": "rw"},
+        },
+        working_dir=str(working_dir),
+    )
 
 
 def main():

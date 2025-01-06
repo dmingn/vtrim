@@ -17,7 +17,7 @@ ffmpeg-python = "^0.2.0"
 black = "^21.9b0"
 flake8 = "^3.9.2"
 isort = "^5.9.3"
-mypy = "^0.910"
+mypy = "^1.14"
 
 [tool.poetry.scripts]
 vtrim = "vtrim.vtrim:main"

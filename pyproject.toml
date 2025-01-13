@@ -10,7 +10,7 @@ authors = ["dmingn <dmingn@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 click = "^8.1.8"
-docker = "^5.0.2"
+docker = "^7.1.0"
 ffmpeg-python = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
